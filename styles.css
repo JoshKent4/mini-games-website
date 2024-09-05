@@ -14,13 +14,13 @@ body {
     max-height: 100vh; /* Ensure container doesn't exceed viewport height */
     padding: 20px;
     box-sizing: border-box;
-	background-color: white;
 }
 
 #wheel {
     border: 5px solid #333;
     border-radius: 50%;
-    margin-bottom: 20px; /* Add space between wheel and input */
+    margin-bottom: 20px;
+    background-color: white;
 }
 
 #spin-btn, #reset-btn {
