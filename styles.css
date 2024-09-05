@@ -1,0 +1,61 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: orange;
+    font-family: Arial, sans-serif;
+    overflow: hidden; /* Prevent body from scrolling */
+}
+
+.container {
+    text-align: center;
+    overflow-y: auto; /* Enable vertical scrolling */
+    max-height: 100vh; /* Ensure container doesn't exceed viewport height */
+    padding: 20px;
+    box-sizing: border-box;
+	background-color: white;
+}
+
+#wheel {
+    border: 5px solid #333;
+    border-radius: 50%;
+    margin-bottom: 20px; /* Add space between wheel and input */
+}
+
+#spin-btn, #reset-btn {
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+#segment-input {
+    margin-top: 20px;
+    padding: 10px;
+    font-size: 16px;
+}
+
+#segment-list {
+    list-style-type: none;
+    padding: 0;
+    margin-top: 20px;
+}
+
+#segment-list li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px 10px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    margin-top: 5px;
+}
+
+#segment-list li button {
+    background-color: #ff4d4d;
+    border: none;
+    color: white;
+    padding: 5px 10px;
+    cursor: pointer;
+}
