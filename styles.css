@@ -1,64 +1,69 @@
 body {
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
     height: 100vh;
     background-color: orange;
     font-family: Arial, sans-serif;
-    overflow: hidden;
+    overflow: auto;
+    margin: 0;
+    padding: 0;
 }
 
 .outer-container {
-    width: 100%; /* Ensure the outer container takes up the full width */
-    /*max-width: 1200px;*/ /* Optionally, set a maximum width */
-    overflow-y: auto; /* Enable vertical scrolling */
-    max-height: 100vh; /* Ensure container doesn't exceed viewport height */
-    padding: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    width: 100%;
+    max-width: 1200px; /* Optionally, set a maximum width */
+    padding: 0;
     box-sizing: border-box;
 }
 
 .inner-container {
-    text-align: center;
-    height: 100%; /* Ensure the inner container takes up the full height */
-    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    margin-top: 0;
 }
 
-.outer-container::-webkit-scrollbar {
-    width: 10px;
+#wheel-display {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin-top: 0;
 }
-
-.outer-container::-webkit-scrollbar-track {
-    background: transparent;
-}
-
-.outer-container::-webkit-scrollbar-thumb {
-    background: #888;
-    border-radius: 10px;
-}
-
-.outer-container::-webkit-scrollbar-thumb:hover {
-    background: #555;
-}
-
-/* Add space at the top of the scrollbar */
-.outer-container::-webkit-scrollbar-button:single-button:vertical:decrement {
-    height: 16px;
-    background: transparent;
-    display: block;
-}
-
-/* Add space at the bottom of the scrollbar */
-/*.outer-container::-webkit-scrollbar-button:single-button:vertical:increment {
-    height: 1px;
-    background: transparent;
-    display: block;
-}*/
 
 #wheel {
     border: 5px solid #333;
     border-radius: 50%;
-    margin-bottom: 20px;
-    background-color: white;
+    margin-bottom: 5px;
+    background-color: #333;
+}
+
+#winning-names {
+    margin-left: 0;
+    flex: 0 0 200px; /* Set fixed width */
+    border: 2px solid #333;
+    border-radius: 15px;
+    padding: 5px;
+    background-color: transparent;
+}
+
+#winning-list {
+    list-style-type: none;
+    padding: 0;
+    margin-top: 20px;
+}
+
+#wheel-controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin-top: 0;
 }
 
 #spin-btn, #reset-btn {
@@ -96,4 +101,8 @@ body {
     color: white;
     padding: 5px 10px;
     cursor: pointer;
+}
+
+.underline {
+    text-decoration: underline;
 }
