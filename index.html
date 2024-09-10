@@ -3,8 +3,9 @@
 	<head>
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<title>Spin the Wheel</title>
+		<title>Mini Games</title>
 		<link rel="stylesheet" href="styles.css">
+		<link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
 	</head>
 	<body>
 		<div class="outer-container">
@@ -14,15 +15,19 @@
 					<canvas id="wheel" width="500" height="500"></canvas>
 					<div id="winning-names">
 						<h4 class="underline">Misfortune Has Struck:</h4>
-						<ul id="winning-list"></ul>
+						<ul id="winning-list">
+							<li id="no-winners-placeholder">No-one!</li>
+						</ul>
 					</div>
 				</div>
 				<div id="wheel-controls">
-					<input type="text" id="segment-input" placeholder="Enter segment">
+					<input type="text" id="segment-input" placeholder="Add misfortunate sole">
 					<button id="spin-btn">Spin</button>
 					<button id="reset-btn">Reset</button>
 				</div>
-				<ul id="segment-list"></ul>
+				<div id="list-container">
+					<ul id="segment-list"></ul>
+				</div>
 			</div>
 		</div>
 		<script src="script.js"></script>

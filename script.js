@@ -3,6 +3,7 @@ const ctx = canvas.getContext('2d');
 const spinBtn = document.getElementById('spin-btn');
 const resetBtn = document.getElementById('reset-btn');
 const segmentInput = document.getElementById('segment-input');
+const noWinnersPlaceholder = document.getElementById('no-winners-placeholder');
 const segmentList = document.getElementById('segment-list');
 const winningList = document.getElementById('winning-list');
 let segments = [];
@@ -33,7 +34,7 @@ function drawWheel() {
         let textWidth = ctx.measureText(segments[i]).width;
         while (textWidth > 150) {
             fontSize--;
-            ctx.font = `bold ${fontSize}px Arial`;
+            ctx.font = `bold ${fontSize}px 'Poppins', sans-serif`;
             textWidth = ctx.measureText(segments[i]).width;
         }
         ctx.fillText(segments[i], 100, 0);
@@ -115,6 +116,9 @@ function calculateWinningSegment() {
 }
 
 function addWinningName(name) {
+    if (noWinnersPlaceholder) {
+        noWinnersPlaceholder.remove();
+    }
     const li = document.createElement('li');
     li.textContent = name;
     winningList.appendChild(li);
@@ -149,10 +153,20 @@ function updateSegmentList() {
     });
 }
 
+function addWinningListPlaceholder() {
+    if (winningList.children.length === 0) {
+        const noWinnersPlaceholder = document.createElement('li');
+        noWinnersPlaceholder.id = 'no-winners-placeholder';
+        noWinnersPlaceholder.textContent = 'No-one!';
+        winningList.appendChild(noWinnersPlaceholder);
+    }
+}
+
 function resetWheel() {
     segments = [];
     updateSegmentList();
     winningList.innerHTML = '';
+    addWinningListPlaceholder();
     drawWheel();
 }
 
