@@ -116,9 +116,8 @@ function calculateWinningSegment() {
 }
 
 function addWinningName(name) {
-    if (noWinnersPlaceholder) {
-        noWinnersPlaceholder.remove();
-    }
+    removeWinningListPLaceholder();
+
     const li = document.createElement('li');
     li.textContent = name;
     winningList.appendChild(li);
@@ -138,6 +137,11 @@ function removeSegment(index) {
     segments.splice(index, 1);
     updateSegmentList();
     drawWheel();
+
+    // If winning list is empty, add placeholder back in
+    if (winningList.children.length === 0) {
+        addWinningListPlaceholder();
+    }
 }
 
 function updateSegmentList() {
@@ -154,11 +158,16 @@ function updateSegmentList() {
 }
 
 function addWinningListPlaceholder() {
-    if (winningList.children.length === 0) {
-        const noWinnersPlaceholder = document.createElement('li');
-        noWinnersPlaceholder.id = 'no-winners-placeholder';
-        noWinnersPlaceholder.textContent = 'No-one!';
-        winningList.appendChild(noWinnersPlaceholder);
+    const noWinnersPlaceholder = document.createElement('li');
+    noWinnersPlaceholder.id = 'no-winners-placeholder';
+    noWinnersPlaceholder.textContent = 'No-one!';
+    winningList.appendChild(noWinnersPlaceholder);
+}
+
+function removeWinningListPLaceholder() {
+    const noWinnersPlaceholder = document.getElementById('no-winners-placeholder');
+    if (noWinnersPlaceholder) {
+        noWinnersPlaceholder.remove();
     }
 }
 
