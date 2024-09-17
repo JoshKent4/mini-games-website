@@ -90,7 +90,7 @@ body {
     transform: translateY(-2px);
 }
 
-#spin-btn, #save-btn, #reset-btn {
+#spin-btn, #reset-btn {
     margin-left: 10px;
     padding: 10px 20px;
     font-size: 16px;
@@ -104,12 +104,12 @@ body {
     font-family: 'Poppins', sans-serif;
 }
 
-#spin-btn:hover, #save-btn:hover, #reset-btn:hover {
+#spin-btn:hover, #reset-btn:hover {
     background-color: #F83758; /* Vibrant Red-Pink */
     transform: translateY(-2px);
 }
 
-#spin-btn:active, #save-btn:active, #reset-btn:active {
+#spin-btn:active, #reset-btn:active {
     transform: translateY(0);
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
