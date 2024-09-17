@@ -110,27 +110,44 @@ function calculateWinningSegment() {
         }
     }
     const winningName = segments[winningSegment];
+
     addWinningName(winningName);
+
+    removeWinningListPlaceholder();
+
     removeSegment(winningSegment);
+
     displaySelectedSegment(winningName);
+
+    // Save to browser's local storage
+    saveWinningData();
 }
 
 function addWinningName(name) {
-    removeWinningListPLaceholder();
-
     const li = document.createElement('li');
     li.textContent = name;
-    winningList.appendChild(li);
+    winningList.appendChild(li);    
+}
+
+function removeWinningListPlaceholder() {
+    const noWinnersPlaceholder = document.getElementById('no-winners-placeholder');
+    if (noWinnersPlaceholder) {
+        noWinnersPlaceholder.remove();
+    }
+    saveWinningData();
 }
 
 function addSegment() {
     const newSegment = segmentInput.value.trim();
+    
     if (newSegment) {
         segments.push(newSegment);
         updateSegmentList();
         drawWheel();
         segmentInput.value = '';
     }
+
+    saveSegmentData();
 }
 
 function removeSegment(index) {
@@ -138,10 +155,8 @@ function removeSegment(index) {
     updateSegmentList();
     drawWheel();
 
-    // If winning list is empty, add placeholder back in
-    if (winningList.children.length === 0) {
-        addWinningListPlaceholder();
-    }
+    // Save to browser's local storage
+    saveSegmentData();
 }
 
 function updateSegmentList() {
@@ -157,26 +172,29 @@ function updateSegmentList() {
     });
 }
 
-function addWinningListPlaceholder() {
-    const noWinnersPlaceholder = document.createElement('li');
-    noWinnersPlaceholder.id = 'no-winners-placeholder';
-    noWinnersPlaceholder.textContent = 'No-one!';
-    winningList.appendChild(noWinnersPlaceholder);
-}
-
-function removeWinningListPLaceholder() {
-    const noWinnersPlaceholder = document.getElementById('no-winners-placeholder');
-    if (noWinnersPlaceholder) {
-        noWinnersPlaceholder.remove();
-    }
-}
-
 function resetWheel() {
     segments = [];
     updateSegmentList();
-    winningList.innerHTML = '';
+
     addWinningListPlaceholder();
+
+    saveSegmentData();
+    saveWinningData();
+
     drawWheel();
+}
+
+function addWinningListPlaceholder() {
+    winningList.innerHTML = '';
+    const noWinnersPlaceholder = recreateNoWinnersPlaceholder();
+    winningList.appendChild(noWinnersPlaceholder);
+}
+
+function recreateNoWinnersPlaceholder() {
+    const noWinnersPlaceholder = document.createElement('li');
+    noWinnersPlaceholder.id = 'no-winners-placeholder';
+    noWinnersPlaceholder.textContent = 'No-one!';
+    return noWinnersPlaceholder;
 }
 
 spinBtn.addEventListener('click', spinWheel);
